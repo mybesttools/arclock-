@@ -46,8 +46,9 @@ re-flashing is needed to change how the clock looks or behaves.
   [web.h](/Users/mike/source/arclock-/ArClock/web.h)).
 - **Tabbed configuration dashboard** (`data/index.html`) with:
   - **Configuration** — WiFi credentials, brightness, presets, timezone,
-    per-clock position/font/color/format, effect and message settings, plus a
-    selectable Bootswatch theme.
+    OpenWeatherMap location/API key, ping target, per-clock position/font/
+    color/format, scrolling message text/color/repeat, effect settings, plus
+    a selectable Bootswatch theme.
   - **Graphs** — historical temperature, humidity and pressure charts and a
     histogram, backed by a rolling JSON history persisted to `LittleFS`.
   - **GPIO** — on/off toggle switches for GPIO pins `D5`, `D6`, `D7` and `D8`.

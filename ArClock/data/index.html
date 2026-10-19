@@ -70,7 +70,7 @@
                         </div>
                     </fieldset>
                     <fieldset class="controlgroup">
-                        <div class="row row-nav row-header" data-height="0" id="row1">Main Controls</div>
+                        <div class="row row-nav row-header" data-height="0" id="row1-main">Main Controls</div>
                         <div class="row">
                             <div class="col-sm-2"><label>Brightness</label></div>
                             <div class="col-sm-3">
@@ -89,6 +89,186 @@
                             <div class="col-sm-2"><label>Timezone</label></div>
                             <div class="col-sm-7">
                                 <select class="input-field" id="timezone" name="timezone" onChange="change()"></select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="controlgroup">
+                        <div class="row row-nav row-header" data-height="0" id="row2">Weather &amp; Network</div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Weather location</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" id="weatherLocation" name="weatherLocation"
+                                    value="{{weatherLocation}}" placeholder="e.g. London,UK" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label><a href="https://openweathermap.org/" target="_blank">OWM</a> API Key</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" name="OWMAPIKey" value="{{OWMAPIKey}}" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Ping target</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" id="pingTarget" name="pingTarget"
+                                    value="{{pingTarget}}" placeholder="e.g. 8.8.8.8" onChange="change()">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="controlgroup">
+                        <div class="row row-nav row-header" data-height="0" id="row3">Primary Display</div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Format</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" name="primaryFormat" value="{{primaryFormat}}"
+                                    title="H = hours (24-hour clock)
+h = hours (12-hour clock)
+M = minutes
+Y = year (4-digit)
+y = year (2-digit)
+m = month
+d = day of month
+S = seconds
+p = ping time (ms)
+C = temperature in Celsius
+F = temperature in Fahrenheit
+: . * - and space" onInput="update()" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Font</label></div>
+                            <div class="col-sm-7">
+                                <select class="input-field btn btn-default" name="primaryFont"
+                                    onChange="change()">{{primary_font_choices}}</select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Color</label></div>
+                            <div class="col-sm-5">
+                                <select class="input-field btn btn-default" name="primaryColorMode"
+                                    onChange="update()">{{primary_color_mode_choices}}</select>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="color" style="height:2.5em; width:100%; padding:0.2em;" name="primaryColor"
+                                    value="{{primaryColor}}" onInput="update()" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>X offset</label></div>
+                            <div class="col-sm-3">
+                                <input class="input-field" type="range" name="primaryX" value="{{primaryX}}"
+                                    onInput="update()" onChange="change()" min="0" max="{{PanelWidth}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Y offset</label></div>
+                            <div class="col-sm-3">
+                                <input class="input-field" type="range" name="primaryY" value="{{primaryY}}"
+                                    onInput="update()" onChange="change()" min="0" max="{{PanelHeight}}">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="controlgroup">
+                        <div class="row row-nav row-header" data-height="0" id="row4">Secondary Display</div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Format</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" name="secondaryFormat" value="{{secondaryFormat}}"
+                                    onInput="update()" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Font</label></div>
+                            <div class="col-sm-7">
+                                <select class="input-field btn btn-default" name="secondaryFont"
+                                    onChange="change()">{{secondary_font_choices}}</select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Color</label></div>
+                            <div class="col-sm-5">
+                                <select class="input-field btn btn-default" name="secondaryColorMode"
+                                    onChange="update()">{{secondary_color_mode_choices}}</select>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="color" style="height:2.5em; width:100%; padding:0.2em;" name="secondaryColor"
+                                    value="{{secondaryColor}}" onInput="update()" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>X offset</label></div>
+                            <div class="col-sm-3">
+                                <input class="input-field" type="range" name="secondaryX" value="{{secondaryX}}"
+                                    onInput="update()" onChange="change()" min="0" max="{{PanelWidth}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Y offset</label></div>
+                            <div class="col-sm-3">
+                                <input class="input-field" type="range" name="secondaryY" value="{{secondaryY}}"
+                                    onInput="update()" onChange="change()" min="0" max="{{PanelHeight}}">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="controlgroup">
+                        <div class="row row-nav row-header" data-height="0" id="row5">Message</div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Text</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" id="message" name="message"
+                                    placeholder="Enter your message" value="{{message}}">
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-default" onclick="return show()">Send</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Color</label></div>
+                            <div class="col-sm-2">
+                                <input type="color" style="height:2.5em; width:100%; padding:0.2em;" name="messageColor"
+                                    value="{{messageColor}}" onInput="update()" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Repeat (seconds)</label></div>
+                            <div class="col-sm-7">
+                                <input class="input-field" type="text" id="messageRepeat" name="messageRepeat"
+                                    placeholder="Repeat interval in seconds" onChange="change()" value="{{messageRepeat}}">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="controlgroup">
+                        <div class="row row-nav row-header" data-height="0" id="row6">Background Effect</div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Mode</label></div>
+                            <div class="col-sm-7">
+                                <select class="input-field btn btn-default" name="effect" onInput="update()"
+                                    onChange="change()">{{effect_choices}}</select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Color</label></div>
+                            <div class="col-sm-5">
+                                <select class="input-field btn btn-default" name="effectColorMode"
+                                    onChange="update()">{{effect_color_mode_choices}}</select>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="color" style="height:2.5em; width:100%; padding:0.2em;" name="effectColor"
+                                    value="{{effectColor}}" onInput="update()" onChange="change()">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Speed</label></div>
+                            <div class="col-sm-3">
+                                <input class="input-field" type="range" name="effectSpeed" value="{{effectSpeed}}"
+                                    onInput="update()" onChange="change()" min="0" max="500">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"><label>Decay</label></div>
+                            <div class="col-sm-3">
+                                <input class="input-field" type="range" name="effectDecay" value="{{effectDecay}}"
+                                    onInput="update()" onChange="change()" min="0" max="200">
                             </div>
                         </div>
                     </fieldset>
